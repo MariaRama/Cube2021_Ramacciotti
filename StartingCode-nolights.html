@@ -36,14 +36,32 @@
 			renderer.setClearColor( 0xf0f0f0 );
 			document.body.appendChild( renderer.domElement );
 			
-			camera.position.set(3,4,6);
+			camera.position.set(500,25,1000);
 			//camera.lookAt( new THREE.Vector3(0,0,0));
 			
-			var geometry = new THREE.BoxGeometry(1,1,1);
+			//var geometry = new THREE.BoxGeometry(1,1,1);
+			//var material = new THREE.MeshBasicMaterial( { color: 0xaaaaaa } );
+			//var cube = new THREE.Mesh( geometry, material );
+			//scene.add( cube );
+
+			//creazione scena
+			//var geometry = new THREE.BoxGeometry( 20, 20, 20 );
+			for ( let i = 0; i < 100; i ++ ) {
+				var altezzaRandom = Math.random() * 100;
+				geometry = new THREE.BoxGeometry(20, altezzaRandom, 20);
+				var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) );
+				object.position.x = Math.random() * 1000 - 450;
+				object.position.y = altezzaRandom/2;
+				object.position.z = Math.random() * 1000 - 400;
+
+				scene.add( object );
+			}
+			//terreno
+			var geometryTerreno = new THREE.BoxGeometry(1500, 1, 1500);
 			var material = new THREE.MeshBasicMaterial( { color: 0xaaaaaa } );
-			var cube = new THREE.Mesh( geometry, material );
-			
-			scene.add( cube );
+			var terreno = new THREE.Mesh(geometryTerreno, material);
+			scene.add(terreno);
+
 			
 			stats = new Stats();
 			stats.domElement.style.position = 'absolute';
@@ -53,6 +71,7 @@
 			// uncomment if you need to draw coordinate axes when building the scene
 			Coordinates.drawAllAxes();
 			
+			//controls camera
 			controls = new THREE.OrbitControls( camera );
 			controls.addEventListener( 'change', Render );
 			
@@ -70,8 +89,8 @@
 			//mio
 			const timer = 0.0001 * Date.now();
 
-			camera.position.x = Math.cos( timer ) * 20;
-			camera.position.z = Math.sin( timer ) * 20;
+			camera.position.x = Math.cos( timer ) * 700;
+			camera.position.z = Math.sin( timer ) * 700;
 
 			camera.lookAt( scene.position );
 
