@@ -1,6 +1,6 @@
 ## Journal
-Lavoro sul codice noLight
+Creazione scena in Unity e scaricamento texture  necessarie per oggetti
 
-Aggiunta camera che ruota intorno alla scena
+Lavoro codice withLight
 
-Aggiunta di creazione scena, un terreno con cubi random
+Creazione terreno
