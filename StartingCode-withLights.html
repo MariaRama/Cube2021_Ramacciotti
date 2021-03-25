@@ -43,14 +43,45 @@
 			camera.position.set(2,2,2);
 			camera.lookAt( new THREE.Vector3(0,0,0));
 			
+			//albero
 			var geometry = new THREE.BoxGeometry(1,1,1);
 			var texture = THREE.ImageUtils.loadTexture('textures/11635.jpg');
 			var material = new THREE.MeshPhongMaterial( { map: texture } );
 			var cube = new THREE.Mesh( geometry, material );
 			cube.castShadow = true;
 			cube.receiveShadow = true;
-			
 			scene.add( cube );
+			var geometryTree = new THREE.BoxGeometry(2.5,4,1);
+			var textureTree = THREE.ImageUtils.loadTexture('textures/green.jpg');
+			var materialTree = new THREE.MeshPhongMaterial( { map: textureTree } );
+			var tree = new THREE.Mesh( geometryTree, materialTree );
+			tree.castShadow = true;
+			tree.receiveShadow = true;
+			cube.add(tree);
+			tree.rotation.x = 90*Math.PI/180;
+			tree.position.y =1;
+			var geometryTree = new THREE.BoxGeometry(2,3,1);
+			var tree = new THREE.Mesh( geometryTree, materialTree );
+			tree.castShadow = true;
+			tree.receiveShadow = true;
+			cube.add(tree);
+			tree.rotation.x = 90*Math.PI/180;
+			tree.position.y =2;
+			var geometryTree = new THREE.BoxGeometry(1.5,2,1);
+			var tree = new THREE.Mesh( geometryTree, materialTree );
+			tree.castShadow = true;
+			tree.receiveShadow = true;
+			cube.add(tree);
+			tree.rotation.x = 90*Math.PI/180;
+			tree.position.y =3;
+			var geometryTree = new THREE.BoxGeometry(1,1,1);
+			var tree = new THREE.Mesh( geometryTree, materialTree );
+			tree.castShadow = true;
+			tree.receiveShadow = true;
+			cube.add(tree);
+			tree.rotation.x = 90*Math.PI/180;
+			tree.position.y =4;
+
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
