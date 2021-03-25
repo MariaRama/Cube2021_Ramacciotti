@@ -5,7 +5,7 @@ Dopo una prima idea di creare qualcosa con cubi colorati che cambiavano colore t
 L'idea prende spunto dal gioco di Minecraft, dove viene rappresentato il mondo naturale a cubetti. 
 Similmente a quello ho deciso di costruire una scena naturale a cubetti.
 
-La prima rappresentazione l'ho realizzata con Unity, così da avere molto chiaro le misure di ogni blocco negli oggetti e il loro posizionamento nella scena.
+La prima rappresentazione l'ho realizzata con Unity, così da avere molto chiaro le misure di ogni blocco negli oggetti e il loro posizionamento nella scena. Senza però considerare l'animazione che verrà realizzata e inserita successivamente.
 
 Questa è una foto dell'idea in Unity (senza inserimento delle texture agli oggetti):
 
