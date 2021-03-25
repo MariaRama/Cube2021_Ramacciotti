@@ -12,3 +12,9 @@ Questa è una foto dell'idea in Unity (senza inserimento delle texture agli ogge
 ![Image from Unity](./img/scene.png)
 
 # Building
+Come prima cosa ho costruito una copia di ogni oggetto che avevo intenzione di inserire, così da essere libera poi di decidere solo il loro posizionamento per la relizzazione della scena.
+
+Iniziando dagli alberi:
+![ImageCodeTree](./img/CodeTree.png)
+I sassi:
+![ImageCodeRocks](./img/CodeRocks.png)
