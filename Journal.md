@@ -15,7 +15,7 @@ Questa è una foto dell'idea in Unity (senza inserimento delle texture agli ogge
 Come prima cosa ho costruito una copia di ogni oggetto che avevo intenzione di inserire, così da essere libera poi di decidere solo il loro posizionamento per la relizzazione della scena.
 
 Iniziando dagli alberi:
-![ImageCodeTree](./img/CodeTree.png = 250x250)
+![ImageCodeTree](./img/CodeTree.png){:height="36px" width="36px"}
 
 I sassi:
 ![ImageCodeRocks](./img/CodeRocks.png = 250x250)
