@@ -51,36 +51,45 @@
 			cube.castShadow = true;
 			cube.receiveShadow = true;
 			scene.add( cube );
-			var geometryTree = new THREE.BoxGeometry(2.5,4,1);
-			var textureTree = THREE.ImageUtils.loadTexture('textures/green.jpg');
-			var materialTree = new THREE.MeshPhongMaterial( { map: textureTree } );
-			var tree = new THREE.Mesh( geometryTree, materialTree );
-			tree.castShadow = true;
-			tree.receiveShadow = true;
-			cube.add(tree);
-			tree.rotation.x = 90*Math.PI/180;
-			tree.position.y =1;
-			var geometryTree = new THREE.BoxGeometry(2,3,1);
-			var tree = new THREE.Mesh( geometryTree, materialTree );
-			tree.castShadow = true;
-			tree.receiveShadow = true;
-			cube.add(tree);
-			tree.rotation.x = 90*Math.PI/180;
-			tree.position.y =2;
-			var geometryTree = new THREE.BoxGeometry(1.5,2,1);
-			var tree = new THREE.Mesh( geometryTree, materialTree );
-			tree.castShadow = true;
-			tree.receiveShadow = true;
-			cube.add(tree);
-			tree.rotation.x = 90*Math.PI/180;
-			tree.position.y =3;
-			var geometryTree = new THREE.BoxGeometry(1,1,1);
-			var tree = new THREE.Mesh( geometryTree, materialTree );
-			tree.castShadow = true;
-			tree.receiveShadow = true;
-			cube.add(tree);
-			tree.rotation.x = 90*Math.PI/180;
-			tree.position.y =4;
+			for(let i = 0; i < 4; i++)
+			{
+				var geometryTree = new THREE.BoxGeometry(1+i/2,1+i,1);
+				var textureTree = THREE.ImageUtils.loadTexture('textures/green.jpg');
+				var materialTree = new THREE.MeshPhongMaterial( { map: textureTree } );
+				var tree = new THREE.Mesh( geometryTree, materialTree );
+				tree.castShadow = true;
+				tree.receiveShadow = true;
+				cube.add(tree);
+				tree.rotation.x = 90*Math.PI/180;
+				tree.position.y =4-i;
+			}
+			cube.position.x = 5; 
+
+			//sassi
+			var geometrySasso = new THREE.BoxGeometry(1,1,1);
+			var textureSasso = THREE.ImageUtils.loadTexture('textures/grey.jpg');
+			var materialSasso = new THREE.MeshPhongMaterial( { map: textureSasso } );
+			var sasso = new THREE.Mesh( geometrySasso, materialSasso );
+			sasso.castShadow = true;
+			sasso.receiveShadow = true;
+			scene.add( sasso );
+			var geometrySasso2 = new THREE.BoxGeometry(2,2,2);
+			var sasso2 = new THREE.Mesh(geometrySasso2, materialSasso);
+			sasso2.castShadow = true;
+			sasso2.receiveShadow = true;
+			sasso.add(sasso2);
+			sasso2.position.y = 0.5;
+			sasso2.position.z = 1.5;
+			var geometrySasso2 = new THREE.BoxGeometry(3,3,3);
+			var sasso2 = new THREE.Mesh(geometrySasso2, materialSasso);
+			sasso2.castShadow = true;
+			sasso2.receiveShadow = true;
+			sasso.add(sasso2);
+			sasso2.position.x =-2;
+			sasso2.position.y = 1;
+			sasso2.position.z = -1;
+
+			
 
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
