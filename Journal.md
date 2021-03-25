@@ -16,5 +16,6 @@ Come prima cosa ho costruito una copia di ogni oggetto che avevo intenzione di i
 
 Iniziando dagli alberi:
 ![ImageCodeTree](./img/CodeTree.png)
+
 I sassi:
 ![ImageCodeRocks](./img/CodeRocks.png)
