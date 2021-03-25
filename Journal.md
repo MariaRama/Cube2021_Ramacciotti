@@ -9,6 +9,6 @@ La prima rappresentazione l'ho realizzata con Unity, così da avere molto chiaro
 
 Questa è una foto dell'idea in Unity (senza inserimento delle texture agli oggetti):
 
-![Image from Unity](https://github.com/MariaRama/Cube2021_Ramacciotti/tree/main/img/scene.png)
+![Image from Unity](./img/scene.png)
 
 # Building
