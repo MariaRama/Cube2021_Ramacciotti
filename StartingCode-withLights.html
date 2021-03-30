@@ -26,7 +26,10 @@
 		<script>
 		
 		var scene, camera, renderer, controls, stats;
-		
+		const cubeRiver = [];
+		const cubeWaterfall = [];
+		const cubeClouds = [];
+
 		function Start() {
 			scene = new THREE.Scene();
 			camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -47,50 +50,141 @@
 			var geometry = new THREE.BoxGeometry(1,1,1);
 			var texture = THREE.ImageUtils.loadTexture('textures/11635.jpg');
 			var material = new THREE.MeshPhongMaterial( { map: texture } );
-			var cube = new THREE.Mesh( geometry, material );
-			cube.castShadow = true;
-			cube.receiveShadow = true;
-			scene.add( cube );
-			for(let i = 0; i < 4; i++)
+			var textureTree = THREE.ImageUtils.loadTexture('textures/green.jpg');
+			var materialTree = new THREE.MeshPhongMaterial( { map: textureTree } );
+			for (let j = 0; j <5; j++)
 			{
-				var geometryTree = new THREE.BoxGeometry(1+i/2,1+i,1);
-				var textureTree = THREE.ImageUtils.loadTexture('textures/green.jpg');
-				var materialTree = new THREE.MeshPhongMaterial( { map: textureTree } );
-				var tree = new THREE.Mesh( geometryTree, materialTree );
-				tree.castShadow = true;
-				tree.receiveShadow = true;
-				cube.add(tree);
-				tree.rotation.x = 90*Math.PI/180;
-				tree.position.y =4-i;
+				var cube = new THREE.Mesh( geometry, material );
+				cube.castShadow = true;
+				cube.receiveShadow = true;
+				scene.add(cube);
+				cube.rotation.y = Math.random() *2* Math.PI;
+				for(let i = 0; i < 4; i++)
+				{
+					var tree = new THREE.Mesh( geometry, materialTree );
+					tree.scale.set(1+i/2,1+i,1)
+					tree.castShadow = true;
+					tree.receiveShadow = true;
+					cube.add(tree);
+					tree.rotation.x = 90*Math.PI/180;
+					tree.position.y = 4-i;
+				}
+				if(j < 3)
+				{
+					cube.position.z = -10;
+					cube.position.x = -1 * (j*10);
+				}
+				if(j>=2)
+				{
+					cube.position.x = 10;
+					cube.position.z = -1 *(-10*(j-3));
+				}
 			}
-			cube.position.x = 5; 
 
 			//sassi
-			var geometrySasso = new THREE.BoxGeometry(1,1,1);
-			var textureSasso = THREE.ImageUtils.loadTexture('textures/grey.jpg');
-			var materialSasso = new THREE.MeshPhongMaterial( { map: textureSasso } );
-			var sasso = new THREE.Mesh( geometrySasso, materialSasso );
-			sasso.castShadow = true;
-			sasso.receiveShadow = true;
-			scene.add( sasso );
-			var geometrySasso2 = new THREE.BoxGeometry(2,2,2);
-			var sasso2 = new THREE.Mesh(geometrySasso2, materialSasso);
-			sasso2.castShadow = true;
-			sasso2.receiveShadow = true;
-			sasso.add(sasso2);
-			sasso2.position.y = 0.5;
-			sasso2.position.z = 1.5;
-			var geometrySasso2 = new THREE.BoxGeometry(3,3,3);
-			var sasso2 = new THREE.Mesh(geometrySasso2, materialSasso);
-			sasso2.castShadow = true;
-			sasso2.receiveShadow = true;
-			sasso.add(sasso2);
-			sasso2.position.x =-2;
-			sasso2.position.y = 1;
-			sasso2.position.z = -1;
+			var geometryRock = new THREE.BoxGeometry(1,1,1);
+			var textureRock = THREE.ImageUtils.loadTexture('textures/grey.jpg');
+			var materialRock = new THREE.MeshPhongMaterial( { map: textureRock } );
 
+			var rock = new THREE.Mesh( geometryRock, materialRock );
+			rock.castShadow = true;
+			rock.receiveShadow = true;
+			scene.add( rock );
+
+			for(let i = 2; i < 4; i++)
+			{
+				var rock2 = new THREE.Mesh(geometryRock, materialRock);
+				rock2.scale.set(i,i,i);
+				rock2.castShadow = true;
+				rock2.receiveShadow = true;
+				rock.add(rock2);
+				if(i==2)
+				{
+					rock2.position.set(0, 0.5, 1.5);
+				}
+				else
+					rock2.position.set(-2, 1, -1)
+			}
+
+			rock.scale.set(3,3,3);
+			rock.position.set(-3.4,1,6.5);
+
+			//nuvola
+			var geometry = new THREE.BoxGeometry(1,1,1);
+			var texture = THREE.ImageUtils.loadTexture('textures/white.jpg');
+			var material = new THREE.MeshPhongMaterial( { map: texture } );
+
+			var pivotCloud = new THREE.Object3D();
+			for(let i = 0; i < 2; i++)
+			{
+				var cloud = new THREE.Mesh( geometry, material );
+				cloud.castShadow = true;
+				cloud.receiveShadow = true;
+				pivotCloud.add( cloud );
+				if (i == 1)
+				{
+					cloud.scale.set(2,1,1);
+					cloud.position.set(0.5,0,1)
+				}
+			}
+			scene.add(pivotCloud);
+			cubeClouds.push(pivotCloud);
+
+			pivotCloud.position.y = 10;
+
+			//waterfall
+			var geometry = new THREE.BoxGeometry(1,1,1);
+			var texture = THREE.ImageUtils.loadTexture('textures/blue.jpg');
+			var material = new THREE.MeshPhongMaterial( { map: texture } );
 			
+			for(let i=0; i<9; i++)
+			{
+				for(let j=0; j<3; j++)
+				{
+					var mesh = new THREE.Mesh(geometry, material);
+					mesh.scale.y = Math.random();
+					mesh.position.z = 2.5 +j;
+					mesh.position.y = 9;
+					mesh.position.x = -13.5 + i;
+					scene.add( mesh );
 
+					cubeRiver.push( mesh );
+				}
+
+			}
+			for(let i=0; i<10; i++)
+			{
+				for(let j=0; j<3; j++)
+				{
+					var mesh = new THREE.Mesh(geometry, material);
+					mesh.scale.y = Math.random();
+					mesh.position.z = 2.5 +j;
+					mesh.position.y = i;
+					mesh.position.x = -4.5;
+					mesh.rotation.z = 90*Math.PI/180;
+					scene.add( mesh );
+
+					cubeWaterfall.push( mesh );
+				}
+
+			}
+			for(let i=0; i<10; i++)
+			{
+				for(let j=0; j<3; j++)
+				{
+					var mesh = new THREE.Mesh(geometry, material);
+					mesh.scale.y = Math.random();
+					mesh.scale.z = 3;
+					mesh.position.z = -2.5 +j*3;
+					mesh.position.x = -4 + i;
+					scene.add( mesh );
+
+					cubeRiver.push( mesh );
+				}
+
+			}
+
+		
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
@@ -98,14 +192,16 @@
 			hemiLight.position.set( 0, 500, 0 );
 			scene.add( hemiLight );
 
-			dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+			dirLight = new THREE.DirectionalLight( 0xffffff, 1);
 			dirLight.color.setHSL( 0.1, 1, 0.95 );
-			dirLight.position.set( -1, 1.75, 1 );
+			dirLight.position.set( 0.5, 5, 5 );
 			dirLight.position.multiplyScalar( 50 );
 			scene.add( dirLight );
 			dirLight.castShadow = true;
 			dirLight.shadow.mapSize.width = 1024;
 			dirLight.shadow.mapSize.height = 1024;
+
+
 
 
 			// GROUND

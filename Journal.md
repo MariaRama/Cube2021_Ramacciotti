@@ -21,3 +21,11 @@ Iniziando dagli alberi:
 I sassi:
 
 ![ImageCodeRocks](./img/CodeRocks.png)
+
+Le nuvole:
+
+![ImageCodeNuvole](./img/CodeNuvola.png)
+
+E alla fine la cascata che, rispetto all'idea iniziale, ho deciso di modificare. La cascata è diventata un insieme di cubetti così da poter essere animata.
+![ImageCodeWaterfall](./img/CodeWaterfall.png)
+
